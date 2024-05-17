@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.1](https://github.com/neuro-inc/private-gpt/compare/v0.5.0...v0.5.1) (2024-05-17)
+
+
+### Bug Fixes
+
+* "no such group" error in Dockerfile, added docx2txt and cryptography deps ([#1841](https://github.com/neuro-inc/private-gpt/issues/1841)) ([947e737](https://github.com/neuro-inc/private-gpt/commit/947e737f300adf621d2261d527192f36f3387f8e))
+* **docs:** Update installation.mdx ([#1866](https://github.com/neuro-inc/private-gpt/issues/1866)) ([c1802e7](https://github.com/neuro-inc/private-gpt/commit/c1802e7cf0e56a2603213ec3b6a4af8fadb8a17a))
+* **llm:** special tokens and leading space ([#1831](https://github.com/neuro-inc/private-gpt/issues/1831)) ([347be64](https://github.com/neuro-inc/private-gpt/commit/347be643f7929c56382a77c3f45f0867605e0e0a))
+* make embedding_api_base match api_base when on docker ([#1859](https://github.com/neuro-inc/private-gpt/issues/1859)) ([2a432bf](https://github.com/neuro-inc/private-gpt/commit/2a432bf9c5582a94eb4052b1e80cabdb118d298e))
+
 ## [0.5.0](https://github.com/zylon-ai/private-gpt/compare/v0.4.0...v0.5.0) (2024-04-02)
 
 
