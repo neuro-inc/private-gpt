@@ -68,6 +68,7 @@ jobs:
       VLLM_MODEL: meta-llama/Meta-Llama-3.1-8B-Instruct
       VLLM_TOKENIZER: meta-llama/Meta-Llama-3.1-8B-Instruct
       HUGGINGFACE_TOKEN: secret:HF_TOKEN
+      HF_HOME: /home/worker/app/models/cache
 
   vllm:
     image: vllm/vllm-openai:v0.6.1.post2
