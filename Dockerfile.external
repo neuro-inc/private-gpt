@@ -41,5 +41,5 @@ COPY --chown=worker settings/*.yaml ./
 
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
-USER worker
+# USER worker
 ENTRYPOINT python -m private_gpt

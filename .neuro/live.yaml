@@ -71,7 +71,7 @@ jobs:
       HF_HOME: /home/worker/app/models/cache
 
   vllm:
-    image: vllm/vllm-openai:v0.6.1.post2
+    image: vllm/vllm-openai:v0.6.6.post1
     name: vllm
     preset: H100x1
     detach: true
