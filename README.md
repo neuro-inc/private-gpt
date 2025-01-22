@@ -1,74 +1,23 @@
-# 🔒 PrivateGPT 📑
+# PrivateGPT 
 
-## Pre-requisites
-* Apolo cli. [Instructions](https://docs.apolo.us/index/cli/installing)
-* HuggingFace access to the model you want to deploy. [For example LLAMA](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)
+<a href="https://trendshift.io/repositories/2601" target="_blank"><img src="https://trendshift.io/api/badge/repositories/2601" alt="imartinez%2FprivateGPT | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-## Run on apolo / neu.ro platform
-Note: this setup is mostly for POC purposes. For production-ready setup, you'll need to replace some of it's components with production-ready Apps.
-
-1. `$ git clone` this repo && `$ cd` into root of it.
-1. Build image for web app with `$ apolo-flow build privategpt`
-2. Create block storage for PGVector with `$ apolo disk create --name pgdata 10G --timeout-unused 100d`
-3. Create secret with HuggingFace token to pull models `$ apolo secret add HF_TOKEN <token>` (see https://huggingface.co/settings/tokens)
-4. `$ apolo-flow run pgvector` -- start vector store
-5. `$ apolo-flow run ollama` -- start embeddings server
-6. `$ apolo-flow run vllm` -- start LLM inference server. Note: if you want to change LLM hosted there, change it in bash command and in `env.VLLM_MODEL` of `pgpt` job.
-7. `$ apolo-flow run pgpt` -- start PrivateGPT web server.
-
-### Running PrivateGPT as stand-alone job
-<details>
-<summary> Instruction </summary>
-
-Currently, we support only deployment case with vLLM as LLM inference server, PGVector as a vector store and Ollama as embeddings server.
-
-Use following environment variables to configure PrivateGPT running within the job:
-
-Scheme: `env name (value type, required/optional) -- description`.
-
-LLM config section:
-- `VLLM_API_BASE` (URL, required) -- HTTP endpoint for LLM inference
-- `VLLM_MODEL` (hugging face model reference, required) -- LLM model name to use (must be available at inference server).
-- `VLLM_TOKENIZER` (hugging face model reference, required) -- tokenized to use while sending requests to LLM
-- `VLLM_MAX_NEW_TOKENS` (int, required) -- controls the response size from LLM
-- `VLLM_CONTEXT_WINDOW` (int, required) -- controls context size that will be sent to LLM
-- `VLLM_TEMPERATURE` (float 0 < x < 1, optional) -- temperature parameter ('creativeness') for LLM. Less value -- more strict penalty for going out of provided context.
-
-PGVector config section:
-- `POSTGRES_HOST` (str, required) -- hostname for Postgres instance with PGVector installed
-- `POSTGRES_PORT` (int, optional) -- TCP port for Postgres instance
-- `POSTGRES_DB` (str, required) -- Postgres database name
-- `POSTGRES_USER` (str, required) -- username for Postgres DB
-- `POSTGRES_PASSWORD` (str, required) -- password for Postgres DB
-
-Embeddings config section:
-- `OLLAMA_API_BASE` (URL, required) -- Ollama server endpoint. Must be already running.
-- `OLLAMA_EMBEDDING_MODEL` (str, optional) -- embeddings model to use. Must be already loaded into Ollama instance
-
-Having above values, run job with
-`$ apolo run --volume storage:.apps/pgpt/data:/home/worker/app/local_data --http-port=8080 ghcr.io/neuro-inc/private-gpt`
-
-Other platform-related configurations like `--life-span`, etc. also work here.
-
-</details>
-
-
-[![Tests](https://github.com/imartinez/privateGPT/actions/workflows/tests.yml/badge.svg)](https://github.com/imartinez/privateGPT/actions/workflows/tests.yml?query=branch%3Amain)
+[![Tests](https://github.com/zylon-ai/private-gpt/actions/workflows/tests.yml/badge.svg)](https://github.com/zylon-agi/private-gpt/actions/workflows/tests.yml?query=branch%3Amain)
 [![Website](https://img.shields.io/website?up_message=check%20it&down_message=down&url=https%3A%2F%2Fdocs.privategpt.dev%2F&label=Documentation)](https://docs.privategpt.dev/)
-
 [![Discord](https://img.shields.io/discord/1164200432894234644?logo=discord&label=PrivateGPT)](https://discord.gg/bK6mRVpErU)
 [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/ZylonPrivateGPT)](https://twitter.com/ZylonPrivateGPT)
-
-
-> Install & usage docs: https://docs.privategpt.dev/
-> 
-> Join the community: [Twitter](https://twitter.com/PrivateGPT_AI) & [Discord](https://discord.gg/bK6mRVpErU)
 
 ![Gradio UI](/fern/docs/assets/ui.png?raw=true)
 
 PrivateGPT is a production-ready AI project that allows you to ask questions about your documents using the power
 of Large Language Models (LLMs), even in scenarios without an Internet connection. 100% private, no data leaves your
 execution environment at any point.
+
+>[!TIP]
+> If you are looking for an **enterprise-ready, fully private AI workspace**
+> check out [Zylon's website](https://zylon.ai)  or [request a demo](https://cal.com/zylon/demo?source=pgpt-readme).
+> Crafted by the team behind PrivateGPT, Zylon is a best-in-class AI collaborative
+> workspace that can be easily deployed on-premise (data center, bare metal...) or in your private cloud (AWS, GCP, Azure...).
 
 The project provides an API offering all the primitives required to build private, context-aware AI applications.
 It follows and extends the [OpenAI API standard](https://openai.com/blog/openai-api),
@@ -91,13 +40,10 @@ In addition to this, a working [Gradio UI](https://www.gradio.app/)
 client is provided to test the API, together with a set of useful tools such as bulk model
 download script, ingestion script, documents folder watch, etc.
 
-> 👂 **Need help applying PrivateGPT to your specific use case?**
-> [Let us know more about it](https://forms.gle/4cSDmH13RZBHV9at7)
-> and we'll try to help! We are refining PrivateGPT through your feedback.
-
 ## 🎞️ Overview
-DISCLAIMER: This README is not updated as frequently as the [documentation](https://docs.privategpt.dev/).
-Please check it out for the latest updates!
+>[!WARNING]
+>  This README is not updated as frequently as the [documentation](https://docs.privategpt.dev/).
+>  Please check it out for the latest updates!
 
 ### Motivation behind PrivateGPT
 Generative AI is a game changer for our society, but adoption in companies of all sizes and data-sensitive
@@ -115,7 +61,7 @@ thus a simpler and more educational implementation to understand the basic conce
 to build a fully local -and therefore, private- chatGPT-like tool.
 
 If you want to keep experimenting with it, we have saved it in the
-[primordial branch](https://github.com/imartinez/privateGPT/tree/primordial) of the project.
+[primordial branch](https://github.com/zylon-ai/private-gpt/tree/primordial) of the project.
 
 > It is strongly recommended to do a clean clone and install of this new version of
 PrivateGPT if you come from the previous, primordial version.
@@ -126,7 +72,7 @@ completions, document ingestion, RAG pipelines and other low-level building bloc
 We want to make it easier for any developer to build AI applications and experiences, as well as provide
 a suitable extensive architecture for the community to keep contributing.
 
-Stay tuned to our [releases](https://github.com/imartinez/privateGPT/releases) to check out all the new features and changes included.
+Stay tuned to our [releases](https://github.com/zylon-ai/private-gpt/releases) to check out all the new features and changes included.
 
 ## 📄 Documentation
 Full documentation on installation, dependencies, configuration, running the server, deployment options,
@@ -185,19 +131,19 @@ Here are a couple of examples:
 
 #### BibTeX
 ```bibtex
-@software{Martinez_Toro_PrivateGPT_2023,
-author = {Martínez Toro, Iván and Gallego Vico, Daniel and Orgaz, Pablo},
+@software{Zylon_PrivateGPT_2023,
+author = {Zylon by PrivateGPT},
 license = {Apache-2.0},
 month = may,
 title = {{PrivateGPT}},
-url = {https://github.com/imartinez/privateGPT},
+url = {https://github.com/zylon-ai/private-gpt},
 year = {2023}
 }
 ```
 
 #### APA
 ```
-Martínez Toro, I., Gallego Vico, D., & Orgaz, P. (2023). PrivateGPT [Computer software]. https://github.com/imartinez/privateGPT
+Zylon by PrivateGPT (2023). PrivateGPT [Computer software]. https://github.com/zylon-ai/private-gpt
 ```
 
 ## 🤗 Partners & Supporters
