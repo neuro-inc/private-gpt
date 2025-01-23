@@ -5,13 +5,19 @@ title: private-gpt
 
 defaults:
   life_span: 5d
+  env:
+    VLLM_MODEL: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B # used in pgpt, vllm
+    VLLM_TOKENIZER: deepseek-ai/DeepSeek-R1-Distill-Qwen-32B # used in pgpt, vllm
+    VLLM_CONTEXT_WINDOW: 34960 # used in pgpt, vllm
+    EMBEDDING_MODEL: nomic-ai/nomic-embed-text-v1.5 # used in pgpt, tei
 
 images:
   privategpt:
     ref: image:$[[ project.id ]]:v1
-    dockerfile: $[[ flow.workspace ]]/Dockerfile.external
+    dockerfile: $[[ flow.workspace ]]/Dockerfile.apolo
     context: $[[ flow.workspace ]]/
     build_preset: cpu-large
+    extra_kaniko_args: --compressed-caching=false
 
 volumes:
   cache:
@@ -26,17 +32,6 @@ volumes:
     remote: storage:$[[ flow.project_id ]]/pgdata
     mount: /var/lib/postgresql/data
     local: pgdata
-  pgdata_onprem:
-    remote: disk:pgdata
-    mount: /var/lib/postgresql/data
-  ollama_models:
-    remote: storage:$[[ flow.project_id ]]/ollama_models
-    mount: /root/.ollama
-    local: models
-  project:
-    remote: storage:$[[ flow.project_id ]]
-    mount: /project
-    local: .
   settings:
     remote: storage:$[[ flow.project_id ]]/settings
     mount: /home/worker/app/settings
@@ -52,7 +47,7 @@ jobs:
     name: pgpt
     preset: cpu-small
     http_port: "8080"
-    # detach: true
+    detach: true
     browse: true
     volumes:
       - ${{ volumes.data.ref_rw }}
@@ -60,54 +55,39 @@ jobs:
       - ${{ volumes.tiktoken_cache.ref_rw }}
     env:
       PORT: 8080
-      PGPT_PROFILES: vllm-pgvector
+      PGPT_PROFILES: app, pgvector
       PGPT_SETTINGS_FOLDER: ${{ volumes.settings.mount }}
       VLLM_API_BASE: http://${{ inspect_job('vllm').internal_hostname_named }}:8000/v1
-      OLLAMA_API_BASE: http://${{ inspect_job('ollama').internal_hostname_named }}:11434
+      EMBEDDING_API_BASE: http://${{ inspect_job('tei').internal_hostname_named }}:3000/v1
       POSTGRES_HOST: ${{ inspect_job('pgvector').internal_hostname_named }}
-      VLLM_MODEL: meta-llama/Meta-Llama-3.1-8B-Instruct
-      VLLM_TOKENIZER: meta-llama/Meta-Llama-3.1-8B-Instruct
       HUGGINGFACE_TOKEN: secret:HF_TOKEN
       HF_HOME: /home/worker/app/models/cache
 
   vllm:
     image: vllm/vllm-openai:v0.6.6.post1
-    name: vllm
-    preset: H100x1
+    preset: a100x1
     detach: true
-    http_port: "8000"
     volumes:
       - ${{ volumes.cache.ref_rw }}
     env:
       HF_TOKEN: secret:HF_TOKEN
     cmd: >
-      --model meta-llama/Meta-Llama-3.1-8B-Instruct
-      --tokenizer meta-llama/Meta-Llama-3.1-8B-Instruct
+      --model $(VLLM_MODEL)
+      --tokenizer $(VLLM_TOKENIZER)
       --dtype=half
-    # cmd: >
-    #   --model meta-llama/Meta-Llama-3.1-8B-Instruct
-    #   --tokenizer meta-llama/Meta-Llama-3.1-8B-Instruct
-    #   --dtype=half
-    # cmd: >
-    #   --model TechxGenus/Meta-Llama-3-70B-AWQ
-    #   --tokenizer TechxGenus/Meta-Llama-3-70B-AWQ
-    #   -q=awq
-    # cmd: >
-    #   --model mgoin/Meta-Llama-3-70B-Instruct-Marlin
-    #   --tokenizer mgoin/Meta-Llama-3-70B-Instruct-Marlin
-    #   --dtype=half
-    #   -q=marlin
+      --trust-remote-code
+      --max-model-len $(VLLM_CONTEXT_WINDOW)
 
-  ollama:
-    image: ollama/ollama:0.1.35
-    volumes:
-      - ${{ volumes.ollama_models.ref_rw }}
-    preset: H100x1
+  tei:
+    image: ghcr.io/huggingface/text-embeddings-inference:1.2.3
+    preset: a100x1
     detach: true
+    volumes:
+      - ${{ volumes.cache.ref_rw }}
     env:
-      MODEL: "nomic-embed-text"
-    http_port: "11434"
-    entrypoint: "bash -c 'ollama serve & sleep 10 && ollama pull ${MODEL} && sleep infinity'"
+      HUGGING_FACE_HUB_TOKEN: secret:HF_TOKEN
+    cmd: >
+      --hostname=0.0.0.0 --port=3000 --model-id=$(EMBEDDING_MODEL) --max-client-batch-size=100
 
   pgvector:
     image: pgvector/pgvector:pg16
@@ -119,5 +99,5 @@ jobs:
       POSTGRES_DB: postgres
       PGDATA: ${{ volumes.pgdata.mount }}/pgdata
     volumes:
+      # If PGVector cannot start because of filesystem locks, try using Apolo Disks instead of Storage
       - ${{ volumes.pgdata.ref_rw }}
-      # - ${{ volumes.pgdata_onprem.ref_rw }}
