@@ -5,7 +5,7 @@ server:
 llm:
   mode: openailike
   max_new_tokens: ${VLLM_MAX_NEW_TOKENS:5000}
-  context_window: ${VLLM_CONTEXT_WINDOW:4096}
+  context_window: ${VLLM_CONTEXT_WINDOW:8192}
   temperature: ${VLLM_TEMPERATURE:0.1}
 
 openai:
