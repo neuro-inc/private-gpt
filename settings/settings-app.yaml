@@ -14,7 +14,7 @@ openai:
   model: ${VLLM_MODEL:-}
   embedding_api_base: ${EMBEDDING_API_BASE:https://api.openai.com/v1/}
   embedding_api_key: ${EMBEDDING_API_KEY:EMPTY}
-  embeddings_model: ${EMBEDDING_MODEL:text-embedding-ada-002}
+  embedding_model: ${EMBEDDING_MODEL:text-embedding-ada-002}
 
 embedding:
   mode: ${EMBEDDING_PROVIDER:openai}
