@@ -65,7 +65,7 @@ class EmbeddingComponent:
                 self.embedding_model = OpenAIEmbedding(
                     api_base=api_base,
                     api_key=api_key,
-                    model=model,
+                    model_name=model,
                 )
             case "ollama":
                 try:
