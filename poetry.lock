@@ -3195,15 +3195,15 @@ sqlalchemy = {version = ">=1.4.49,<2.1", extras = ["asyncio"]}
 
 [[package]]
 name = "llama-index-vector-stores-qdrant"
-version = "0.3.0"
+version = "0.3.3"
 description = "llama-index vector_stores qdrant integration"
 optional = true
 python-versions = "<3.13,>=3.9"
 groups = ["main"]
 markers = "extra == \"vector-stores-qdrant\""
 files = [
-    {file = "llama_index_vector_stores_qdrant-0.3.0-py3-none-any.whl", hash = "sha256:6b437d679744524bfd26cfe5716cb7b877a7c94f91c51aaa4ff601a1a9205318"},
-    {file = "llama_index_vector_stores_qdrant-0.3.0.tar.gz", hash = "sha256:99663ceb0c92dda55df9c06163ca42be7eb0f3a67401d5ab8ce973f7ced683a2"},
+    {file = "llama_index_vector_stores_qdrant-0.3.3-py3-none-any.whl", hash = "sha256:2255069ae25be2ac87f05396790dd49da742adcefd5eefe0cb347efd50999ceb"},
+    {file = "llama_index_vector_stores_qdrant-0.3.3.tar.gz", hash = "sha256:62979c401dce1e2ee277f32fbbbddd9fe81c5e35f3559479f92af42b09086c3b"},
 ]
 
 [package.dependencies]
@@ -6212,9 +6212,10 @@ train = ["accelerate (>=0.20.3)", "datasets"]
 name = "setuptools"
 version = "78.1.1"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
-optional = false
+optional = true
 python-versions = ">=3.9"
 groups = ["main"]
+markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\" and (extra == \"embeddings-huggingface\" or extra == \"rerank-sentence-transformers\") or extra == \"vector-stores-chroma\" or extra == \"vector-stores-milvus\" or extra == \"vector-stores-qdrant\""
 files = [
     {file = "setuptools-78.1.1-py3-none-any.whl", hash = "sha256:c3a9c4211ff4c309edb8b8c4f1cbfa7ae324c4ba9f91ff254e3d305b9fd54561"},
     {file = "setuptools-78.1.1.tar.gz", hash = "sha256:fcc17fd9cd898242f6b4adfaca46137a9edef687f43e6f78469692a5e70d851d"},
