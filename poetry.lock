@@ -3175,15 +3175,15 @@ pymilvus = ">=2.3.6,<3.0.0"
 
 [[package]]
 name = "llama-index-vector-stores-postgres"
-version = "0.2.5"
+version = "0.2.6"
 description = "llama-index vector_stores postgres integration"
 optional = true
 python-versions = "<4.0,>=3.8.1"
 groups = ["main"]
 markers = "extra == \"vector-stores-postgres\""
 files = [
-    {file = "llama_index_vector_stores_postgres-0.2.5-py3-none-any.whl", hash = "sha256:e0676f28c2f0505c3ee142b539669f8c6e55506e22c9b5e7abb1914a4811717f"},
-    {file = "llama_index_vector_stores_postgres-0.2.5.tar.gz", hash = "sha256:24b272808b2494133d07798e7903fc7eee98b87a35d38aef24a363f3778041ce"},
+    {file = "llama_index_vector_stores_postgres-0.2.6-py3-none-any.whl", hash = "sha256:73ef3e88b6060c61eb4c40d9a7f6922c4f1502acd54d91d6e631c659b30c1683"},
+    {file = "llama_index_vector_stores_postgres-0.2.6.tar.gz", hash = "sha256:c7a28e64c6795bc17c1404c7dd903001ecab67faef8f3ac4a28685810b120134"},
 ]
 
 [package.dependencies]
@@ -6212,9 +6212,10 @@ train = ["accelerate (>=0.20.3)", "datasets"]
 name = "setuptools"
 version = "78.1.1"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
-optional = false
+optional = true
 python-versions = ">=3.9"
 groups = ["main"]
+markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\" and (extra == \"embeddings-huggingface\" or extra == \"rerank-sentence-transformers\") or extra == \"vector-stores-chroma\" or extra == \"vector-stores-milvus\" or extra == \"vector-stores-qdrant\""
 files = [
     {file = "setuptools-78.1.1-py3-none-any.whl", hash = "sha256:c3a9c4211ff4c309edb8b8c4f1cbfa7ae324c4ba9f91ff254e3d305b9fd54561"},
     {file = "setuptools-78.1.1.tar.gz", hash = "sha256:fcc17fd9cd898242f6b4adfaca46137a9edef687f43e6f78469692a5e70d851d"},
