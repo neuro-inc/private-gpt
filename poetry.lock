@@ -3141,15 +3141,15 @@ llama-index-core = ">=0.11.0,<0.12.0"
 
 [[package]]
 name = "llama-index-vector-stores-clickhouse"
-version = "0.3.1"
+version = "0.3.2"
 description = "llama-index vector_stores clickhouse integration"
 optional = true
 python-versions = "<4.0,>=3.8.1"
 groups = ["main"]
 markers = "extra == \"vector-stores-clickhouse\""
 files = [
-    {file = "llama_index_vector_stores_clickhouse-0.3.1-py3-none-any.whl", hash = "sha256:38d49bd7e1cc900e4f98e7571678866d1c583b973ebafe15e4b6f2dad37ab147"},
-    {file = "llama_index_vector_stores_clickhouse-0.3.1.tar.gz", hash = "sha256:419e6b55d582e8c86aa68c9c24a86bdb289105ec9c6593ac12ec893c622e49f6"},
+    {file = "llama_index_vector_stores_clickhouse-0.3.2-py3-none-any.whl", hash = "sha256:7501687559826b82b623fcc8c2425a03fe045d6ae8b1ce5d58b8008046dd6a2c"},
+    {file = "llama_index_vector_stores_clickhouse-0.3.2.tar.gz", hash = "sha256:b8303f48ea98fe0fc6c447b915fd24e96b7e5796ea38773613d795286c463c01"},
 ]
 
 [package.dependencies]
@@ -6212,9 +6212,10 @@ train = ["accelerate (>=0.20.3)", "datasets"]
 name = "setuptools"
 version = "78.1.1"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
-optional = false
+optional = true
 python-versions = ">=3.9"
 groups = ["main"]
+markers = "platform_system == \"Linux\" and platform_machine == \"x86_64\" and (extra == \"embeddings-huggingface\" or extra == \"rerank-sentence-transformers\") or extra == \"vector-stores-chroma\" or extra == \"vector-stores-milvus\" or extra == \"vector-stores-qdrant\""
 files = [
     {file = "setuptools-78.1.1-py3-none-any.whl", hash = "sha256:c3a9c4211ff4c309edb8b8c4f1cbfa7ae324c4ba9f91ff254e3d305b9fd54561"},
     {file = "setuptools-78.1.1.tar.gz", hash = "sha256:fcc17fd9cd898242f6b4adfaca46137a9edef687f43e6f78469692a5e70d851d"},
