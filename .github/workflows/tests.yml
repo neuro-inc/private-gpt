@@ -15,7 +15,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./.github/workflows/actions/install_dependencies
 
   checks:
@@ -29,7 +29,7 @@ jobs:
           - ruff
           - mypy
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./.github/workflows/actions/install_dependencies
       - name: run ${{ matrix.quality-command }}
         run: make ${{ matrix.quality-command }}
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     name: test
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ./.github/workflows/actions/install_dependencies
       - name: run test
         run: make test-coverage
@@ -66,3 +66,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "All checks passed"
+
+  approve:
+    name: Approve bot PR
+    runs-on: ubuntu-latest
+    if: endsWith(github.actor, '[bot]')
+    needs: all_checks_passed
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: metadata
+        id: metadata
+        if: github.actor == 'dependabot[bot]'
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable auto-merge for bot PRs
+        run: gh pr merge --auto --squash --delete-branch "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
