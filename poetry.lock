@@ -6193,29 +6193,36 @@ doc = ["Sphinx", "sphinx-rtd-theme"]
 
 [[package]]
 name = "sentence-transformers"
-version = "3.1.1"
-description = "State-of-the-Art Text Embeddings"
+version = "5.4.1"
+description = "Embeddings, Retrieval, and Reranking"
 optional = true
-python-versions = ">=3.8"
+python-versions = ">=3.10"
 groups = ["main"]
 markers = "extra == \"embeddings-huggingface\" or extra == \"rerank-sentence-transformers\""
 files = [
-    {file = "sentence_transformers-3.1.1-py3-none-any.whl", hash = "sha256:c73bf6f17e3676bb9372a6133a254ebfb5907586b470f2bac5a840c64c3cf97e"},
-    {file = "sentence_transformers-3.1.1.tar.gz", hash = "sha256:8f00020ef4ad6b918475c38af545c22f61403b67eb22d994860bab06902db160"},
+    {file = "sentence_transformers-5.4.1-py3-none-any.whl", hash = "sha256:a6d640fc363849b63affb8e140e9d328feabab86f83d58ac3e16b1c28140b790"},
+    {file = "sentence_transformers-5.4.1.tar.gz", hash = "sha256:436bcb1182a0ff42a8fb2b1c43498a70d0a75b688d182f2cd0d1dd115af61ddc"},
 ]
 
 [package.dependencies]
-huggingface-hub = ">=0.19.3"
-Pillow = "*"
-scikit-learn = "*"
-scipy = "*"
+huggingface-hub = ">=0.23.0"
+numpy = ">=1.20.0"
+scikit-learn = ">=0.22.0"
+scipy = ">=1.0.0"
 torch = ">=1.11.0"
-tqdm = "*"
-transformers = ">=4.38.0,<5.0.0"
+tqdm = ">=4.0.0"
+transformers = ">=4.41.0,<6.0.0"
+typing_extensions = ">=4.5.0"
 
 [package.extras]
-dev = ["accelerate (>=0.20.3)", "datasets", "pre-commit", "pytest", "pytest-cov"]
-train = ["accelerate (>=0.20.3)", "datasets"]
+audio = ["transformers[audio]"]
+dev = ["accelerate (>=0.20.3)", "datasets (>=2.0.0)", "peft", "pre-commit", "pytest", "pytest-cov", "pytest-env", "pytest-subtests", "pytest-xdist", "transformers[audio,video,vision]"]
+image = ["transformers[vision]"]
+onnx = ["optimum-onnx[onnxruntime]"]
+onnx-gpu = ["optimum-onnx[onnxruntime-gpu]"]
+openvino = ["optimum-intel[openvino]"]
+train = ["accelerate (>=0.20.3)", "datasets (>=2.0.0)"]
+video = ["transformers[video]"]
 
 [[package]]
 name = "setuptools"
@@ -7619,4 +7626,4 @@ vector-stores-qdrant = ["llama-index-vector-stores-qdrant"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.12"
-content-hash = "ebbe69369c572fc8c14f52e77026945d89d52e57c8e8abe2504d1e914a06f5b7"
+content-hash = "6fbbf20777b2f7c903db283c1c21522decddde5eaa96e6b85f6172fd4681f58f"
