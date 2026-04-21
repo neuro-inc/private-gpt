@@ -3200,15 +3200,15 @@ llama-index-core = ">=0.11.0,<0.12.0"
 
 [[package]]
 name = "llama-index-vector-stores-clickhouse"
-version = "0.3.1"
+version = "0.3.2"
 description = "llama-index vector_stores clickhouse integration"
 optional = true
 python-versions = "<4.0,>=3.8.1"
 groups = ["main"]
 markers = "extra == \"vector-stores-clickhouse\""
 files = [
-    {file = "llama_index_vector_stores_clickhouse-0.3.1-py3-none-any.whl", hash = "sha256:38d49bd7e1cc900e4f98e7571678866d1c583b973ebafe15e4b6f2dad37ab147"},
-    {file = "llama_index_vector_stores_clickhouse-0.3.1.tar.gz", hash = "sha256:419e6b55d582e8c86aa68c9c24a86bdb289105ec9c6593ac12ec893c622e49f6"},
+    {file = "llama_index_vector_stores_clickhouse-0.3.2-py3-none-any.whl", hash = "sha256:7501687559826b82b623fcc8c2425a03fe045d6ae8b1ce5d58b8008046dd6a2c"},
+    {file = "llama_index_vector_stores_clickhouse-0.3.2.tar.gz", hash = "sha256:b8303f48ea98fe0fc6c447b915fd24e96b7e5796ea38773613d795286c463c01"},
 ]
 
 [package.dependencies]
