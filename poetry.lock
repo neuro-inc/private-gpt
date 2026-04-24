@@ -3033,15 +3033,15 @@ llama-index-core = ">=0.11.0,<0.12.0"
 
 [[package]]
 name = "llama-index-llms-ollama"
-version = "0.3.2"
+version = "0.3.6"
 description = "llama-index llms ollama integration"
 optional = true
 python-versions = "<4.0,>=3.8.1"
 groups = ["main"]
 markers = "extra == \"llms-ollama\""
 files = [
-    {file = "llama_index_llms_ollama-0.3.2-py3-none-any.whl", hash = "sha256:4c27940bb1e4e69ed41342ee7026b2d6f49803ef84bff21dc11d162753d5d908"},
-    {file = "llama_index_llms_ollama-0.3.2.tar.gz", hash = "sha256:b745bd6b7bd900423d22db4b21ccdafd6c23be31bfd02f237706a17a308f8a9c"},
+    {file = "llama_index_llms_ollama-0.3.6-py3-none-any.whl", hash = "sha256:0a70c2d35ba920032afb04345502776d371466ef9c489f88b71c027a7d3432a7"},
+    {file = "llama_index_llms_ollama-0.3.6.tar.gz", hash = "sha256:1284ef03df171fefee949f8d75e9d1ce3a38172f990269a38f39328f5a93ea47"},
 ]
 
 [package.dependencies]
