@@ -3233,15 +3233,15 @@ llama-index-llms-openai = ">=0.2.1,<0.3.0"
 
 [[package]]
 name = "llama-index-llms-gemini"
-version = "0.3.5"
+version = "0.3.7"
 description = "llama-index llms gemini integration"
 optional = true
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "extra == \"llms-gemini\""
 files = [
-    {file = "llama_index_llms_gemini-0.3.5-py3-none-any.whl", hash = "sha256:67c8aacc47a895547acc577f670d7dcfe6a5a9e24460c8d7f81bc62504a8ed64"},
-    {file = "llama_index_llms_gemini-0.3.5.tar.gz", hash = "sha256:e6c62216845700263f4f47da8a664d265a8925dd894b627719c74423a8cc5685"},
+    {file = "llama_index_llms_gemini-0.3.7-py3-none-any.whl", hash = "sha256:0bf069c4c844af384a3ba69b7dbc23c625c86a25c949f43c6b48ace806dca4e5"},
+    {file = "llama_index_llms_gemini-0.3.7.tar.gz", hash = "sha256:cf8bb02d8facb5fd6108903a68ebdbbb72764d3cad115889a97b245527488c48"},
 ]
 
 [package.dependencies]
