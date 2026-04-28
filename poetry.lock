@@ -3426,15 +3426,15 @@ llama-index-core = ">=0.11.0,<0.12.0"
 
 [[package]]
 name = "llama-index-vector-stores-milvus"
-version = "0.2.4"
+version = "0.2.7"
 description = "llama-index vector_stores milvus integration"
 optional = true
 python-versions = "<4.0,>=3.8.1"
 groups = ["main"]
 markers = "extra == \"vector-stores-milvus\""
 files = [
-    {file = "llama_index_vector_stores_milvus-0.2.4-py3-none-any.whl", hash = "sha256:301cccc4768ed4d996b4d175960d941d31a9fbc4ac367b5aca0116a1ce937e47"},
-    {file = "llama_index_vector_stores_milvus-0.2.4.tar.gz", hash = "sha256:8da6484d6c611f5890b3969d68235b757992def328b16e8479d02dca7c084a53"},
+    {file = "llama_index_vector_stores_milvus-0.2.7-py3-none-any.whl", hash = "sha256:b3b309b15bf338ab2ebef494b93fc0f38fc1ef76c05d3bed290c2c17e131f41a"},
+    {file = "llama_index_vector_stores_milvus-0.2.7.tar.gz", hash = "sha256:d0074f62c5a1e64a3ac012dca5e2af63b5b973b4563f33bf4e7d52b505e563da"},
 ]
 
 [package.dependencies]
