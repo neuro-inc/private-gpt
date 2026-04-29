@@ -3128,15 +3128,15 @@ llama-index-llms-azure-openai = ">=0.2.0,<0.3.0"
 
 [[package]]
 name = "llama-index-embeddings-gemini"
-version = "0.2.0"
+version = "0.2.2"
 description = "llama-index embeddings gemini integration"
 optional = true
 python-versions = "<4.0,>=3.9"
 groups = ["main"]
 markers = "extra == \"embeddings-gemini\""
 files = [
-    {file = "llama_index_embeddings_gemini-0.2.0-py3-none-any.whl", hash = "sha256:89a784d3e3c8eebd57d653750efc70d15354aa447b29f86911f7ac14beaa7abb"},
-    {file = "llama_index_embeddings_gemini-0.2.0.tar.gz", hash = "sha256:edfb6ef8687c02bf7ecab16452576502f51f56d030fb1ceb9b2ceaafb4de41d7"},
+    {file = "llama_index_embeddings_gemini-0.2.2-py3-none-any.whl", hash = "sha256:ace3a93e2938e400d5138319dcd2dfb8f0f979aaae0c1e2b6c2981776e416ae3"},
+    {file = "llama_index_embeddings_gemini-0.2.2.tar.gz", hash = "sha256:9555b5dad583a8d416fa68a3c5c17df1a3ae370d34eb14ddbf40a6fb26781f4a"},
 ]
 
 [package.dependencies]
