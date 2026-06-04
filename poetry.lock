@@ -501,36 +501,36 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "boto3"
-version = "1.43.5"
+version = "1.43.22"
 description = "The AWS SDK for Python"
 optional = true
 python-versions = ">=3.10"
 groups = ["main"]
 markers = "extra == \"embeddings-sagemaker\" or extra == \"llms-sagemaker\""
 files = [
-    {file = "boto3-1.43.5-py3-none-any.whl", hash = "sha256:aa8a296c8db55d812767b282cfe4c7977f0b0eeaa709abdaeb368b9c738e901f"},
-    {file = "boto3-1.43.5.tar.gz", hash = "sha256:414be7868f25c3b6a0232301c8ab40347911b6b191926b61f00a63f89b97b2bc"},
+    {file = "boto3-1.43.22-py3-none-any.whl", hash = "sha256:0597fb9fe1613e636ac55219a5a54ad0fcb7c15e6be32c799301f7fb53ff04e1"},
+    {file = "boto3-1.43.22.tar.gz", hash = "sha256:2a7fe12d8e0731bb8aa7c1e59b4ccc770fda031b8659c2f6f497393bdcec3051"},
 ]
 
 [package.dependencies]
-botocore = ">=1.43.5,<1.44.0"
+botocore = ">=1.43.22,<1.44.0"
 jmespath = ">=0.7.1,<2.0.0"
-s3transfer = ">=0.17.0,<0.18.0"
+s3transfer = ">=0.18.0,<0.19.0"
 
 [package.extras]
 crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.43.5"
+version = "1.43.22"
 description = "Low-level, data-driven core of boto 3."
 optional = true
 python-versions = ">=3.10"
 groups = ["main"]
 markers = "extra == \"embeddings-sagemaker\" or extra == \"llms-sagemaker\""
 files = [
-    {file = "botocore-1.43.5-py3-none-any.whl", hash = "sha256:a1df6e0c6346735936f42e6b99f3b28f1e9397731c0bc2563c617df7965a0dc0"},
-    {file = "botocore-1.43.5.tar.gz", hash = "sha256:5c7207816ab5e48382adcb2a64db388fa4abe9ee1d23f72c82ae62c51a0bc84e"},
+    {file = "botocore-1.43.22-py3-none-any.whl", hash = "sha256:ceec9f81d0891abe7b28ca2b2ee47e32de7b3360ad11e80d351470f015217379"},
+    {file = "botocore-1.43.22.tar.gz", hash = "sha256:b00de525e538289ed4a7a85263f1be4e47473c124cec87be6b23be49356bf745"},
 ]
 
 [package.dependencies]
@@ -6546,15 +6546,15 @@ markers = {main = "extra == \"ui\" and sys_platform != \"emscripten\""}
 
 [[package]]
 name = "s3transfer"
-version = "0.17.0"
+version = "0.18.0"
 description = "An Amazon S3 Transfer Manager"
 optional = true
 python-versions = ">=3.10"
 groups = ["main"]
 markers = "extra == \"embeddings-sagemaker\" or extra == \"llms-sagemaker\""
 files = [
-    {file = "s3transfer-0.17.0-py3-none-any.whl", hash = "sha256:ce3801712acf4ad3e89fb9990df97b4972e93f4b3b0004d214be5bce12814c20"},
-    {file = "s3transfer-0.17.0.tar.gz", hash = "sha256:9edeb6d1c3c2f89d6050348548834ad8289610d886e5bf7b7207728bd43ce33a"},
+    {file = "s3transfer-0.18.0-py3-none-any.whl", hash = "sha256:239c13b09e65ad0346e1be7348b8a202dcad44ac7ea7c6eb858fc881dce739b6"},
+    {file = "s3transfer-0.18.0.tar.gz", hash = "sha256:3760b8b7ec1315da54048b2d626276732bee4300d054d492d4e1d43e20d4ecbd"},
 ]
 
 [package.dependencies]
