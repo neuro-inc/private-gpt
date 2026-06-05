@@ -1639,16 +1639,19 @@ standard = ["uvicorn[standard] (>=0.15.0)"]
 
 [[package]]
 name = "ffmpy"
-version = "0.4.0"
+version = "1.0.0"
 description = "A simple Python wrapper for FFmpeg"
 optional = true
-python-versions = "<4.0.0,>=3.8.1"
+python-versions = ">=3.9"
 groups = ["main"]
 markers = "extra == \"ui\""
 files = [
-    {file = "ffmpy-0.4.0-py3-none-any.whl", hash = "sha256:39c0f20c5b465e7f8d29a5191f3a7d7675a8c546d9d985de8921151cd9b59e14"},
-    {file = "ffmpy-0.4.0.tar.gz", hash = "sha256:131b57794e802ad555f579007497f7a3d0cab0583d37496c685b8acae4837b1d"},
+    {file = "ffmpy-1.0.0-py3-none-any.whl", hash = "sha256:5640e5f0fd03fb6236d0e119b16ccf6522db1c826fdf35dcb87087b60fd7504f"},
+    {file = "ffmpy-1.0.0.tar.gz", hash = "sha256:b12932e95435c8820f1cd041024402765f821971e4bae753b327fc02a6e12f8b"},
 ]
+
+[package.extras]
+psutil = ["psutil (>=5.8.0)"]
 
 [[package]]
 name = "filelock"
@@ -8253,4 +8256,4 @@ vector-stores-qdrant = ["llama-index-vector-stores-qdrant"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<3.12"
-content-hash = "2e20a62cd1bedd518e17bcdd5e9e476f85719b0498150711de1443b55a883ddd"
+content-hash = "d0b96c0e9adecea62c66d7f552ef2d49d17249ff1e356d0d48bf1fcd6655d343"
