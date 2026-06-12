@@ -7,7 +7,7 @@ authors = ["Zylon <hi@zylon.ai>"]
 [tool.poetry.dependencies]
 python = ">=3.11,<3.12"
 # PrivateGPT
-fastapi = { extras = ["all"], version = "^0.115.0" }
+fastapi = { extras = ["all"], version = ">=0.115,<0.137" }
 python-multipart = ">=0.0.10,<0.0.33"
 injector = ">=0.22,<0.25"
 pyyaml = "^6.0.2"
